@@ -1,0 +1,30 @@
+.menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    background-color: gainsboro;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.links {
+    display: flex;
+}
+
+.a {
+    text-decoration: none;
+    color: black;
+    margin: 0 20px;
+}
+
+.but {
+    cursor: pointer;
+    background-color: gainsboro;
+    border: none;
+}
+
+.a:hover, .but:hover {
+    text-decoration: underline;
+}

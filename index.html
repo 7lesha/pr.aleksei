@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Вход</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Войти</h1>
+        <form class="form">
+            <label>
+                <p class="p">Почта</p>
+                <input class="input" name="email" type="email" placeholder="example@mail.ru" required>
+                <p class="p">Пароль</p>
+                <input class="input" name="pas" type="password" placeholder="example" required>
+            </label>
+            <label class="label" style="display: none;">    
+                <p class="p">Повторите пароль</p>
+                <input class="input" name="pas0" type="password" placeholder="example">
+            </label>
+            <div class="buttons">
+                <button class="but" type="button">Зарегистрироваться</button>
+                <button class="but" id="button" type="submit">Войти</button>
+            </div>
+        </form>
+    </div>
+    <script src="./assets/js/index.js"></script>
+</body>
+</html>

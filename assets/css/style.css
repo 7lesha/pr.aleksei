@@ -1,0 +1,46 @@
+.container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);            
+    border: black 1px solid;
+    padding: 20px 30px;
+    width: 400px;
+    text-align: center;
+}
+
+.form {
+
+}
+
+.p {
+    margin: 20px 0 10px;
+    font-size: 15px;
+}
+
+.title {
+    margin: 0 0 30px;
+}
+
+.input {
+    width: 200px;
+    margin: 0 auto;
+    display: block;
+    padding: 5px;
+}
+
+.but {
+    cursor: pointer;
+    background-color: white;
+    border: none;
+}
+
+.but:hover {
+    text-decoration:underline;
+}
+
+.buttons {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+}
