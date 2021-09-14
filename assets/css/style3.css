@@ -21,7 +21,7 @@
 
 .but {
     cursor: pointer;
-    background-color: gainsboro;
+    background-color: rgb(255, 255, 255, 0);
     border: none;
 }
 

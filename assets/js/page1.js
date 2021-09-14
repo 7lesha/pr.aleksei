@@ -1,10 +1,11 @@
 'use strict';
 
-const but = document.querySelector('.but');
 const p = document.querySelector('.p');
 p.textContent = 'Вход выполнен с устройства: ' + navigator.userAgent;
- 
-but.addEventListener('click', () => {
-    localStorage.clear();
-    window.location.href = 'index.html';
+
+window.addEventListener('load', () => {
+    const user = localStorage.getItem('user');
+    if (!user) {
+        window.location.href = 'index.html'; 
+    }
 });

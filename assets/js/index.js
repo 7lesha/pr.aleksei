@@ -39,3 +39,10 @@ but1.addEventListener('click', () => {
     title.textContent = but2.textContent = f ? 'Зарегистрироваться' : 'Войти';
     form.reset();
 });
+
+window.addEventListener('load', () => {
+    const user = localStorage.getItem('user');
+    if (user) {
+        window.location.href = 'page1.html'; 
+    }
+});
