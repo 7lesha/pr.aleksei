@@ -13,7 +13,12 @@
         <form class="form">
             <label>
                 <p class="p">Почта</p>
-                <input class="input" name="email" type="email" placeholder="example@mail.ru" required>
+                <div class="diverror">
+                    <input class="input email" type="text" placeholder="example@mail.ru" pattern= "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                    <p class="err">Ошибка!</p>
+                </div>
+            </label>
+            <label>
                 <p class="p">Пароль</p>
                 <input class="input" name="pas" type="password" placeholder="example" required>
             </label>
@@ -23,9 +28,13 @@
             </label>
             <div class="buttons">
                 <button class="but" type="button">Зарегистрироваться</button>
-                <button class="but" id="button" type="submit">Войти</button>
+                <button class="but0" type="submit" disabled>Войти</button>
             </div>
         </form>
+    </div>
+    <div class="messerror">
+        <button class="close" type="button"><img src="./assets/img/close.svg"></button>
+        <p class="error"></p>
     </div>
     <script src="./assets/js/index.js"></script>
 </body>

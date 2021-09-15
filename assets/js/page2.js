@@ -5,61 +5,12 @@ const label = document.querySelector('.label');
 const input = document.querySelector('.input');
 const table = document.querySelector('.table');
 const div = document.querySelector('.container');
-const confirm = document.querySelector('.confirm');
+const confirm0 = document.querySelector('.confirm');
 const cancel = document.querySelector('.cancel');
 
 function hide() {
     div.style.display = 'none';
 }
-
-window.addEventListener('load', () => {
-    const user = localStorage.getItem('user');
-    if (!user) {
-        window.location.href = 'index.html'; 
-    }
-});
-
-cancel.addEventListener('click', hide);
-
-let number;
-confirm.addEventListener('click', () => {
-    function closemess() {
-        mess.remove();
-    };
-    hide();
-    const tr = document.querySelectorAll('tr');
-    tr.forEach((tr, index) => {
-        if (index === number) {
-            console.log(number, index);
-            console.log(tr);
-            tr.remove();
-        }
-    });
-    const mess = document.createElement('div');
-    mess.classList.add('mess');
-    div.after(mess);
-    const p = document.createElement('p');
-    const close = document.createElement('button');
-    close.innerHTML = "<img src=./assets/img/close.svg>";
-    close.classList.add('close');
-    p.textContent = 'Строка таблицы удалена';
-    mess.prepend(p);
-    mess.prepend(close);
-    setTimeout(closemess, 5000);
-    close.addEventListener('click', () => {
-        closemess();
-    });
-});
-button.addEventListener('click', () => {
-    window.scrollTo(0, 0);
-});
-label.addEventListener('click', () => {
-    if (input.checked) {
-        table.style.backgroundColor = 'ghostwhite';
-    } else {
-        table.style.backgroundColor = 'white';
-    }
-});
 
 (async function () {
     async function getUsers() {
@@ -120,5 +71,43 @@ label.addEventListener('click', () => {
             div.style.display = 'block';
             number = index + 1;
         });
+    });
+    cancel.addEventListener('click', hide);
+    const tr = document.querySelectorAll('tr');
+    let number;
+    confirm0.addEventListener('click', () => {
+        function closemess() {
+            mess.remove();
+        };
+        hide();
+        tr.forEach((tr, index) => {
+            if (index === number) {
+                tr.remove();
+            }
+        });
+        const mess = document.createElement('div');
+        mess.classList.add('mess');
+        div.after(mess);
+        const p = document.createElement('p');
+        const close = document.createElement('button');
+        close.innerHTML = "<img src=./assets/img/close.svg>";
+        close.classList.add('close');
+        p.textContent = 'Строка таблицы удалена';
+        mess.prepend(p);
+        mess.prepend(close);
+        setTimeout(closemess, 3000);
+        close.addEventListener('click', () => {
+            closemess();
+        });
+    });
+    button.addEventListener('click', () => {
+        window.scrollTo(0, 0);
+    });
+    label.addEventListener('click', () => {
+        if (input.checked) {
+            table.style.backgroundColor = 'ghostwhite';
+        } else {
+            table.style.backgroundColor = 'white';
+        }
     });
 })();

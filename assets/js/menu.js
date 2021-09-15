@@ -3,8 +3,17 @@
 const but = document.querySelector('.but');
 const a = document.querySelectorAll('.a');
 
+window.addEventListener('load', () => {
+    let user = localStorage.getItem('user');
+    if (!user) {
+        window.location.href = 'index.html'; 
+    } 
+});
+
 but.addEventListener('click', () => {
-    localStorage.clear();
+    let user = (localStorage.getItem('user')).split(',');
+    user[0] = 'false';
+    localStorage.setItem('user', user);
     window.location.href = 'index.html';
 });
 

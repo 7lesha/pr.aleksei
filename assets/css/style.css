@@ -35,7 +35,16 @@
     border: none;
 }
 
+.but0 {
+    background-color: rgb(255, 255, 255, 0);
+    border: none;
+}
+
 .but:hover {
+    text-decoration:underline;
+}
+
+.but0:hover {
     text-decoration:underline;
 }
 
@@ -43,4 +52,40 @@
     margin-top: 40px;
     display: flex;
     justify-content: space-between;
+}
+
+.messerror {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);            
+    border: black 1px solid;
+    padding: 20px 30px;
+    width: 300px;
+    background-color: white;
+    text-align: center;
+}
+
+.close {
+    cursor: pointer;
+    border: none;
+    background-color: rgb(255, 255, 255, 0); 
+    position: absolute;
+    right: 5px;
+    top: 10px;
+}
+
+.err {
+    margin: 5px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: red;
+    display: none;
+}
+
+.diverror {
+    position: relative;
+    display: flex;
 }

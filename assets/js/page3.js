@@ -1,8 +1,10 @@
 'use strict';
 
-window.addEventListener('load', () => {
-    const user = localStorage.getItem('user');
-    if (!user) {
-        window.location.href = 'index.html'; 
-    }
-});
+// let map;
+// initMap();
+// function initMap() {
+//   map = new google.maps.Map(document.getElementById("map"), {
+//     center: { lat: -34.397, lng: 150.644 },
+//     zoom: 8,
+//   });
+// }
