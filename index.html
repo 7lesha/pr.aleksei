@@ -14,17 +14,23 @@
             <label>
                 <p class="p">Почта</p>
                 <div class="diverror">
-                    <input class="input email" type="text" placeholder="example@mail.ru" pattern= "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
-                    <p class="err">Ошибка!</p>
+                    <input class="input email" type="text" placeholder="example@mail.ru" required>
+                    <p class="err err1"></p>
                 </div>
             </label>
             <label>
                 <p class="p">Пароль</p>
-                <input class="input" name="pas" type="password" placeholder="example" required>
+                <div class="diverror">
+                    <input class="input pas1" type="password" placeholder="example" required>
+                    <p class="err err2"></p>
+                </div>
             </label>
             <label class="label" style="display: none;">    
                 <p class="p">Повторите пароль</p>
-                <input class="input" name="pas0" type="password" placeholder="example">
+                <div class="diverror">
+                    <input class="input pas2" type="password" placeholder="example">
+                    <p class="err err3"></p>
+                </div>
             </label>
             <div class="buttons">
                 <button class="but" type="button">Зарегистрироваться</button>

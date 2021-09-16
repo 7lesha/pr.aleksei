@@ -8,10 +8,6 @@ const div = document.querySelector('.container');
 const confirm0 = document.querySelector('.confirm');
 const cancel = document.querySelector('.cancel');
 
-function hide() {
-    div.style.display = 'none';
-}
-
 (async function () {
     async function getUsers() {
         const response = await fetch('https://gist.githubusercontent.com/oDASCo/3f4014d24dc79e1e29b58bfa96afaa1b/raw/677516ee3bd278f7e3d805108596ca431d00b629/db.json');
@@ -78,6 +74,9 @@ function hide() {
             number = index + 1;
         });
     });
+    function hide() {
+        div.style.display = 'none';
+    }
     cancel.addEventListener('click', hide);
     const tr = document.querySelectorAll('tr');
     confirm0.addEventListener('click', () => {
