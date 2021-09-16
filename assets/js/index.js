@@ -18,11 +18,9 @@ function n() {
     title.textContent = f ? 'Создание аккаунта' : 'Войти';
     but2.textContent = f ? 'Зарегистрироваться' : 'Войти';
     but2.disabled = 'disables';
-    err1.style.display = 'none';
-    err2.style.display = 'none';
-    err3.style.display = 'none';
-    form.reset();
+    err1.style.display = err2.style.display = err3.style.display = 'none';
     tfpas1 = tfpas2 = tfemail = false;
+    form.reset();
 }
 function c(err, m, text) {
     err.textContent = text;
@@ -30,6 +28,11 @@ function c(err, m, text) {
     const g = tfemail && tfpas1 && (hideorshow() ? true : (tfpas2 ? true : false));
     but2.disabled = g ? false : 'disables';
     but2.style.cursor = g ? 'pointer' : 'context-menu';
+}
+function key(event, cod) {
+    if ((cod >= 188 && cod <= 191 && cod !== 189) || (cod >= 219 && cod <= 222) || cod === 111 || cod === 32) {
+        event.preventDefault();
+    }
 }
 
 let tfpas1, tfpas2, tfemail = false;
@@ -100,16 +103,16 @@ email.addEventListener('input', () => {
     if (email.value.length === 0) {
         c(err1, m, 'Поле не заполнено!');
     } else {
-        c(err1, m, 'Ошибка!');
+        c(err1, m, 'Пожалуйста, введите корректный email-адрес');
     }
 });
 pas1.addEventListener('input', () => {
     if (pas1.value.length === 0) {
         tfpas1 = false;
         c(err2, false, 'Поле не заполнено!');
-    } else if (pas1.value.length < 5) {
+    } else if (pas1.value.length < 8 || pas1.value.length > 20) {
         tfpas1 = false;
-        c(err2, false, 'Минимум 5 символов');
+        c(err2, false, 'Длина пароля должна быть от 8 до 20 символов');
     } else {
         tfpas1 = true;
         c(err2, true);
@@ -119,11 +122,17 @@ pas2.addEventListener('input', () => {
     if (pas2.value.length === 0) {
         tfpas2 = false;
         c(err3, false, 'Поле не заполнено!');
-    } else if (pas2.value.length < 5) {
+    } else if (pas2.value.length < 8 || pas2.value.length > 20) {
         tfpas2 = false;
-        c(err3, false, 'Минимум 5 символов');
+        c(err3, false, 'Длина пароля должна быть от 8 до 20 символов');
     } else {
         tfpas2 = true;
         c(err3, true);
     }
+});
+pas1.addEventListener('keydown', event => {
+    key(event, event.keyCode);
+});
+pas2.addEventListener('keydown', event => {
+    key(event, event.keyCode);
 });
