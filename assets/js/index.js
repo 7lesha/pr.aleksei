@@ -11,55 +11,57 @@ function show(text) {
     p.textContent = text;
     setTimeout(hide, 3000);
 }
-function n() {
-    const f = hideorshow();
-    label.style.display = f ? 'block' : 'none';
-    but1.textContent = f ? 'Войти' : 'Зарегистрироваться';
-    title.textContent = f ? 'Создание аккаунта' : 'Войти';
-    but2.textContent = f ? 'Зарегистрироваться' : 'Войти';
+function reset() {
+    const temporary = hideorshow();
+    label.style.display = temporary ? 'block' : 'none';
+    but1.textContent = temporary ? 'Войти' : 'Зарегистрироваться';
+    title.textContent = temporary ? 'Создание аккаунта' : 'Войти';
+    but2.textContent = temporary ? 'Зарегистрироваться' : 'Войти';
     but2.disabled = 'disables';
-    err1.style.display = err2.style.display = err3.style.display = 'none';
-    tfpas1 = tfpas2 = tfemail = false;
+    err[0].style.display = err[1].style.display = err[2].style.display = 'none';
+    true_false = [false, false, false];
+    passwords(false, 1);
+    passwords(false, 2);
     form.reset();
 }
-function c(err, m, text) {
+function login_button(err, none_block, text) {
     err.textContent = text;
-    err.style.display = m ? 'none' : 'block';
-    const g = tfemail && tfpas1 && (hideorshow() ? true : (tfpas2 ? true : false));
-    but2.disabled = g ? false : 'disables';
-    but2.style.cursor = g ? 'pointer' : 'context-menu';
+    err.style.marginBottom = '0px';
+    err.style.display = none_block ? 'none' : 'block';
+    const temporary = true_false[0] && true_false[1] && (hideorshow() ? true : (true_false[2] ? true : false));
+    but2.disabled = temporary ? false : 'disables';
+    but2.style.cursor = temporary ? 'pointer' : 'context-menu';
 }
-function key(event, cod) {
-    if ((cod >= 188 && cod <= 191 && cod !== 189) || (cod >= 219 && cod <= 222) || cod === 111 || cod === 32) {
-        event.preventDefault();
-    }
+function passwords(temporary, index) {
+    inputs[index].type = temporary ? 'text' : 'password';
 }
 
-let tfpas1, tfpas2, tfemail = false;
+let true_false = [false, false, false];
 const form = document.querySelector('.form');
-const but1 = form.querySelector('.but');
-const but2 = form.querySelector('.but0');
+const but1 = form.querySelector('.but1');
+const but2 = form.querySelector('.but2');
 const label = form.querySelector('.label');
 const title = document.querySelector('.title');
 const div = document.querySelector('.messerror');
 const p = div.querySelector('.error');
 const butclose = document.querySelector('.close');
-const err1 = document.querySelector('.err1');
-const err2 = document.querySelector('.err2');
-const err3 = document.querySelector('.err3');
-const email = document.querySelector('.email');
-const pas1 = document.querySelector('.pas1');
-const pas2 = document.querySelector('.pas2');
+const err = document.querySelectorAll('.err');
+const inputs = document.querySelectorAll('.input');
+const butpas = document.querySelectorAll('.butpas');
 const emailreg = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
-  
+const AZ = /[A-Z,А-Я]/;
+const az = /[a-z,а-я]/;
+const num = /[0-9]/;
+const symbol = /[~`!@#$%\^&*+=\-\[\]\\';()/{}|\\":<>\?]/;
+
 form.addEventListener('submit', event => {
     event.preventDefault();
     const arr = ['false'];
-    arr.push(email.value);
-    arr.push(pas1.value);
+    arr.push(inputs[0].value);
+    arr.push(inputs[1].value);
     if (hideorshow()) {
         if (localStorage.getItem('user')) {
-            const user = (localStorage.getItem('user')).split(',');
+            let user = (localStorage.getItem('user')).split(',');
             if (user[1] === arr[1] && user[2] === arr[2]) {
                 user[0] = 'true';
                 localStorage.setItem('user', user);
@@ -69,14 +71,14 @@ form.addEventListener('submit', event => {
             }
         } else {
             show('Зарегистрируйтесь. Нет ни одного пользователя!');
-            n();
+            reset();
         }
     } else {
         if (localStorage.getItem('user')) {
             show('Ошибка. Вы уже зарегисрированы!');
-            n();
+            reset();
         } else {
-            if (arr[2] === pas2.value) {
+            if (arr[2] === inputs[2].value) {
                 localStorage.setItem('user', arr);
                 window.location.href = 'page1.html';
             } else {
@@ -85,54 +87,54 @@ form.addEventListener('submit', event => {
         }
     }
 });
-but1.addEventListener('click', n);
+but1.addEventListener('click', reset);
 butclose.addEventListener('click', hide);
 
 window.addEventListener('load', () => {
-    let user = localStorage.getItem('user');
-    if (user) {
-        user = user.split(',');
+    if (localStorage.getItem('user')) {
+        const user = localStorage.getItem('user').split(',');
         if (user[0] === 'true') {
             window.location.href = 'page1.html'; 
         }
     }
 });
-email.addEventListener('input', () => {
-    const m = emailreg.test(email.value);
-    tfemail = m ? true : false;
-    if (email.value.length === 0) {
-        c(err1, m, 'Поле не заполнено!');
+inputs.forEach((inputs, index) => {
+    if (index === 0) {
+        inputs.addEventListener('input', () => {
+            if (inputs.value.length === 0) {
+                login_button(err[index], false, 'Поле не заполнено!');
+            } else {
+                const temporary = emailreg.test(inputs.value);
+                true_false[index] = temporary ? true : false;
+                login_button(err[index], true_false[index], 'Пожалуйста, введите корректный email-адрес');
+            }
+        });
     } else {
-        c(err1, m, 'Пожалуйста, введите корректный email-адрес');
+        inputs.addEventListener('input', () => {
+            true_false[index] = false;
+            const d = AZ.test(inputs.value) && az.test(inputs.value) && num.test(inputs.value) && symbol.test(inputs.value);
+            if (inputs.value.length === 0) {
+                login_button(err[index], true_false[index], 'Поле не заполнено!');
+            } else if (inputs.value.length < 8 || inputs.value.length > 20) {
+                login_button(err[index], true_false[index], 'Длина пароля должна быть от 8 до 20 символов');
+            } else if (d){
+                true_false[index] = true;
+                login_button(err[index], true_false[index]);
+            } else {
+                login_button(err[index], true_false[index], 'Пароль должен состоять минимум из 1 цифры, 1 буквы, 1 заглавной буквы и 1 спецсимвола');
+                err[index].style.marginBottom = '-16px';
+            }
+        });
+        inputs.addEventListener('keydown', event => {
+            if (event.key === ',' || event.key === '.' || event.key === ' ') {
+                event.preventDefault();
+            }
+        });
     }
 });
-pas1.addEventListener('input', () => {
-    if (pas1.value.length === 0) {
-        tfpas1 = false;
-        c(err2, false, 'Поле не заполнено!');
-    } else if (pas1.value.length < 8 || pas1.value.length > 20) {
-        tfpas1 = false;
-        c(err2, false, 'Длина пароля должна быть от 8 до 20 символов');
-    } else {
-        tfpas1 = true;
-        c(err2, true);
-    }
-});
-pas2.addEventListener('input', () => {
-    if (pas2.value.length === 0) {
-        tfpas2 = false;
-        c(err3, false, 'Поле не заполнено!');
-    } else if (pas2.value.length < 8 || pas2.value.length > 20) {
-        tfpas2 = false;
-        c(err3, false, 'Длина пароля должна быть от 8 до 20 символов');
-    } else {
-        tfpas2 = true;
-        c(err3, true);
-    }
-});
-pas1.addEventListener('keydown', event => {
-    key(event, event.keyCode);
-});
-pas2.addEventListener('keydown', event => {
-    key(event, event.keyCode);
+butpas.forEach((butpas, index) => {
+    butpas.addEventListener('click', () => {
+        const temporary = inputs[index + 1].type === 'password';
+        passwords(temporary, index + 1);
+    });
 });

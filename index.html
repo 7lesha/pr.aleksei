@@ -11,30 +11,32 @@
     <div class="container">
         <h1 class="title">Войти</h1>
         <form class="form">
-            <label>
-                <p class="p">Почта</p>
-                <div class="diverror">
+            <div class="diverror">
+                <label>
+                    <span class="p">Почта</span>
                     <input class="input email" type="text" placeholder="example@mail.ru">
-                    <p class="err err1"></p>
-                </div>
-            </label>
-            <label>
-                <p class="p">Пароль</p>
-                <div class="diverror">
-                    <input class="input pas1" type="password" placeholder="example" oncopy="return false" onpaste="return false" oncut="return false">
-                    <p class="err err2"></p>
-                </div>
-            </label>
-            <label class="label" style="display: none;">    
-                <p class="p">Повторите пароль</p>
-                <div class="diverror">
-                    <input class="input pas2" type="password" placeholder="example" oncopy="return false" onpaste="return false" oncut="return false">
-                    <p class="err err3"></p>
-                </div>
-            </label>
+                    <span class="err"></span>
+                </label>
+            </div>
+            <div class="diverror">
+                <label>
+                    <span class="p">Пароль</span>
+                    <input class="input pas" type="password" placeholder="example" oncopy="return false" onpaste="return false" oncut="return false">
+                    <button class="butpas" type="button"><img src=""></button>
+                    <span class="err"></span>
+                </label>
+            </div>
+            <div class="diverror">
+                <label class="label" style="display: none;">    
+                    <span class="p">Повторите пароль</span>
+                    <input class="input pas" type="password" placeholder="example" oncopy="return false" onpaste="return false" oncut="return false">
+                    <button class="butpas" type="button"><img src=""></button>
+                    <span class="err"></span>
+                </label>
+            </div>
             <div class="buttons">
-                <button class="but" type="button">Зарегистрироваться</button>
-                <button class="but0" type="submit" disabled>Войти</button>
+                <button class="but1" type="button">Зарегистрироваться</button>
+                <button class="but2" type="submit" disabled>Войти</button>
             </div>
         </form>
     </div>
