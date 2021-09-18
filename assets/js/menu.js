@@ -4,10 +4,14 @@ const but = document.querySelector('.but');
 const a = document.querySelectorAll('.a');
 
 window.addEventListener('load', () => {
-    let user = localStorage.getItem('user');
-    if (!user) {
+    if (localStorage.getItem('user')) {
+        const user = localStorage.getItem('user').split(',');
+        if (user[0] === 'false') {
+            window.location.href = 'index.html'; 
+        }
+    } else {
         window.location.href = 'index.html'; 
-    } 
+    }
 });
 
 but.addEventListener('click', () => {
@@ -20,4 +24,9 @@ but.addEventListener('click', () => {
 a.forEach((item, index) => {
     const page = window.location.href.endsWith('page' + (index + 1) + '.html');
     item.style.color = page ? 'red' : 'black';
+    item.addEventListener('click', event => {
+        if (page) {
+            event.preventDefault();
+        }
+    });
 });

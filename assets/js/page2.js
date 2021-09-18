@@ -53,7 +53,7 @@ const cancel = document.querySelector('.cancel');
             }
         }
         const date = new Date(Date.parse(balance_and_date));
-        clients(tr, date.getDate() + '.' + date.getMonth() + '.' + date.getFullYear());
+        clients(tr, date.toLocaleDateString());
         const del = document.createElement('button');
         del.textContent = 'Удалить';
         del.classList.add('del');

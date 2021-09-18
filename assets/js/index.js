@@ -1,7 +1,7 @@
 'use strict';
 
 function hideorshow() {
-    return label.style.display === 'none';
+    return divnone.style.display === 'none';
 }
 function hide() {
     div.style.display = 'none';
@@ -9,15 +9,15 @@ function hide() {
 function show(text) {
     div.style.display = 'block';
     p.textContent = text;
-    setTimeout(hide, 3000);
+    setTimeout(hide, 5000);
 }
 function reset() {
     const temporary = hideorshow();
-    label.style.display = temporary ? 'block' : 'none';
+    divnone.style.display = temporary ? 'block' : 'none';
     but1.textContent = temporary ? 'Войти' : 'Зарегистрироваться';
     title.textContent = temporary ? 'Создание аккаунта' : 'Войти';
     but2.textContent = temporary ? 'Зарегистрироваться' : 'Войти';
-    but2.disabled = 'disables';
+    but2.disabled = true;
     err[0].style.display = err[1].style.display = err[2].style.display = 'none';
     true_false = [false, false, false];
     passwords(false, 1);
@@ -29,18 +29,19 @@ function login_button(err, none_block, text) {
     err.style.marginBottom = '0px';
     err.style.display = none_block ? 'none' : 'block';
     const temporary = true_false[0] && true_false[1] && (hideorshow() ? true : (true_false[2] ? true : false));
-    but2.disabled = temporary ? false : 'disables';
+    but2.disabled = temporary ? false : true;
     but2.style.cursor = temporary ? 'pointer' : 'context-menu';
 }
 function passwords(temporary, index) {
     inputs[index].type = temporary ? 'text' : 'password';
+    butpas[index - 1].innerHTML = "<img src=./assets/img/eye" + (temporary ? '1' : '') + ".png>";
 }
 
 let true_false = [false, false, false];
 const form = document.querySelector('.form');
 const but1 = form.querySelector('.but1');
 const but2 = form.querySelector('.but2');
-const label = form.querySelector('.label');
+const divnone = form.querySelector('.divnone');
 const title = document.querySelector('.title');
 const div = document.querySelector('.messerror');
 const p = div.querySelector('.error');
@@ -61,7 +62,7 @@ form.addEventListener('submit', event => {
     arr.push(inputs[1].value);
     if (hideorshow()) {
         if (localStorage.getItem('user')) {
-            let user = (localStorage.getItem('user')).split(',');
+            let user = localStorage.getItem('user').split(',');
             if (user[1] === arr[1] && user[2] === arr[2]) {
                 user[0] = 'true';
                 localStorage.setItem('user', user);
@@ -80,7 +81,8 @@ form.addEventListener('submit', event => {
         } else {
             if (arr[2] === inputs[2].value) {
                 localStorage.setItem('user', arr);
-                window.location.href = 'page1.html';
+                show('Регистрация прошла успешно. Теперь войдите');
+                reset();
             } else {
                 show('Пароли не совпадают!');
             }
