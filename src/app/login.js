@@ -121,7 +121,6 @@ inputs.forEach((input, index) => {
       let temporary = emailAZ.test(input.value) && emailaz.test(input.value);
       temporary = temporary && num.test(input.value) && symbol.test(input.value);
       if (input.value.length === 0) {
-        console.log(11);
         loginbutton(index, truefalse[index], 'Поле не заполнено!');
       } else if (input.value.length < numbers.number8 || input.value.length > numbers.number20) {
         loginbutton(index, truefalse[index], 'Длина пароля должна быть от 8 до 20 символов');
