@@ -3,7 +3,7 @@
     left: 0;
     top: 0;
     right: 0;
-    background-color: gainsboro;
+    background-color: #dcdcdc;
     padding: 20px;
     display: flex;
     justify-content: space-between;
@@ -14,18 +14,19 @@
 }
 
 .a {
-    text-decoration: none;
-    color: black;
+    text-decoration: 0;
+    color: #000000;
     margin: 0 20px;
 }
 
 .but {
     cursor: pointer;
     background-color: rgb(255, 255, 255, 0);
-    border: none;
+    border: 0;
 }
 
-.a:hover, .but:hover {
+.a:hover,
+.but:hover {
     text-decoration: underline;
 }
 

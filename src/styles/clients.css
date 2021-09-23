@@ -3,7 +3,7 @@
     left: 0;
     top: 0;
     right: 0;
-    background-color: gainsboro;
+    background-color: #dcdcdc;
     padding: 20px;
     display: flex;
     justify-content: space-between;
@@ -14,18 +14,19 @@
 }
 
 .a {
-    text-decoration: none;
-    color: black;
+    text-decoration: 0;
+    color: #000000;
     margin: 0 20px;
 }
 
 .but {
     cursor: pointer;
     background-color: rgb(255, 255, 255, 0);
-    border: none;
+    border: 0;
 }
 
-.a:hover, .but:hover {
+.a:hover,
+.but:hover {
     text-decoration: underline;
 }
 
@@ -50,18 +51,20 @@
     padding: 5px 10px;
 }
 
-th, td, tr {
-    border: 2px black solid;
+th,
+td,
+tr {
+    border: 2px #000000 solid;
 }
 
 tr:nth-child(2n) {
-    background-color: ghostwhite;
+    background-color: #f8f8ff;
 }
 
 .del {
     cursor: pointer;
-    border: none;
-    background-color: rgb(255, 255, 255, 0); 
+    border: 0;
+    background-color: rgb(255, 255, 255, 0);
 }
 
 .del:hover {
@@ -73,11 +76,11 @@ tr:nth-child(2n) {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);            
-    border: black 1px solid;
+    transform: translate(-50%, -50%);
+    border: #000000 1px solid;
     padding: 20px 30px;
     width: 300px;
-    background-color: white;
+    background-color: #ffffff;
 }
 
 .title {
@@ -100,14 +103,14 @@ tr:nth-child(2n) {
     right: 0;
     bottom: 0;
     padding: 20px;
-    background-color: white;
-    border: 1px black solid;
+    background-color: #ffffff;
+    border: 1px #000000 solid;
 }
 
 .close {
     cursor: pointer;
-    border: none;
-    background-color: rgb(255, 255, 255, 0); 
+    border: 0;
+    background-color: rgb(255, 255, 255, 0);
     position: absolute;
     right: 5px;
     top: 10px;
