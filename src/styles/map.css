@@ -15,15 +15,15 @@
 }
 
 .a {
-  text-decoration: 0;
+  text-decoration: initial;
   color: #000000;
   margin: 0 20px;
 }
 
 .but {
   cursor: pointer;
-  background-color: rgb(255, 255, 255, 0);
-  border: 0;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
 }
 
 .a:hover,

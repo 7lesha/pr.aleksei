@@ -94,7 +94,7 @@ getUsers().then(users => {
           arr0[index - 1] = 0;
           const temporary = arr0.slice(0);
           temporary.sort((first, second) => second - first);
-          greatestbalance = temporary[0];
+          [greatestbalance] = temporary;
         } else {
           arr0[index - 1] = 0;
         }
@@ -107,7 +107,7 @@ getUsers().then(users => {
     div.after(mess);
     const ptext = document.createElement('p');
     const close = document.createElement('button');
-    close.innerHTML = '<img src=./src/img/close.svg>';
+    close.innerHTML = '<img src=./assets/img/close.svg>';
     close.classList.add('close');
     ptext.textContent = 'Строка таблицы удалена';
     mess.prepend(ptext);

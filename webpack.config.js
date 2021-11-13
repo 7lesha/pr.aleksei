@@ -1,6 +1,7 @@
 const { root } = require('./config/helpers');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 
 module.exports = {
@@ -125,6 +126,14 @@ module.exports = {
         template: 'src/map.html',
         filename: 'map.html'
       },
+    ),
+    new CopyPlugin(
+      [
+        {
+          from: 'src/img',
+          to: 'assets/img',
+        }
+      ]
     ),
   ],
 };

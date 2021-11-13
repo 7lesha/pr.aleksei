@@ -35,7 +35,7 @@ function show(text) {
 }
 function passwords(temporary, index) {
   inputs[index].type = temporary ? 'text' : 'password';
-  butpas[index - 1].innerHTML = '<img src=./src/img/eye' + (temporary ? '1' : '') + '.png>';
+  butpas[index - 1].innerHTML = '<img src=./assets/img/eye' + (temporary ? '1' : '') + '.png>';
 }
 function reset() {
   const temporary = hideorshow();
